@@ -21,6 +21,19 @@
         <spigot.version>1.21.1-R0.1-SNAPSHOT</spigot.version>
     </properties>
 
+    <repositories>
+        <!-- Spigot snapshots -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <!-- Sonatype snapshots (backup) -->
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Spigot API -->
         <dependency>
@@ -57,9 +70,6 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <relocations>
-                                <!-- Nếu sau này có lib ngoài thì relocate vào -->
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
