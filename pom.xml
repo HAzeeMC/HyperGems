@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>HyperGems</name>
-    <description>Custom gem system with effects and recipes for Minecraft 1.21.1</description>
+    <description>Hệ thống thêm Gems để tăng trải nghiệm game!</description>
     <url>https://github.com/yourname/HyperGems</url>
 
     <properties>
