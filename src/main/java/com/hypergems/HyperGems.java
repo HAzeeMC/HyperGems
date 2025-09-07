@@ -55,4 +55,25 @@ public final class HyperGems extends JavaPlugin {
     public NamespacedKey getGemKey() {
         return gemKey;
     }
+
+    // 🔹 Thêm getter cho các manager
+    public GemConfigManager getGemConfig() {
+        return gemConfig;
+    }
+
+    public GemManager getGemManager() {
+        return gemManager;
+    }
+
+    public PlayerDataManager getPlayerDataManager() {
+        return playerDataManager;
+    }
+
+    public RecipeManager getRecipeManager() {
+        return recipeManager;
+    }
+
+    public GuiManager getGuiManager() {
+        return guiManager;
+    }
 }
