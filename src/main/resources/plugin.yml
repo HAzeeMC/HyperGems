@@ -1,0 +1,22 @@
+name: HyperGems
+main: com.hypergems.HyperGems
+version: 1.0.0
+api-version: 1.21
+author: H_Azee
+
+commands:
+  hypergems:
+    description: Manage HyperGems
+    usage: /<command> <give|gui|reload>
+    permission: hypergems.admin
+
+permissions:
+  hypergems.admin:
+    description: Full access to HyperGems
+    default: op
+  hypergems.give:
+    description: Allow giving gems with command
+    default: op
+  hypergems.gui:
+    description: Allow opening recipe GUI
+    default: true
