@@ -1,0 +1,39 @@
+gems:
+  rush:
+    display: "Rush Emerald"
+    prefix: "&6[RUSH]"
+    lore:
+      - "&7Hold this gem to gain speed."
+    effects:
+      - type: SPEED
+        duration: 40
+        amplifier: 1
+    recipe:
+      shape:
+        - " E "
+        - "EDE"
+        - " E "
+      ingredients:
+        E: EMERALD
+        D: DIAMOND
+
+  might:
+    display: "Might Emerald"
+    prefix: "&4[MIGHT]"
+    lore:
+      - "&7Hold this gem to gain strength."
+    effects:
+      - type: INCREASE_DAMAGE
+        duration: 40
+        amplifier: 0
+    recipe:
+      shape:
+        - "EEE"
+        - "EDE"
+        - "EEE"
+      ingredients:
+        E: EMERALD
+        D: DIAMOND
+
+# Danh sách UUID đã nhận gem lần đầu
+received: []
