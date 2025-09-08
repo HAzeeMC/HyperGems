@@ -4,6 +4,7 @@ import com.hypergems.HyperGems;
 import com.hypergems.config.GemConfigManager.GemData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -22,23 +23,33 @@ public class GemChecker implements Runnable {
     @Override
     public void run() {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            String gemId = gemManager.getGemId(player.getInventory().getItemInMainHand());
-            if (gemId == null) continue;
+            // Check cả main hand và off hand
+            applyEffects(player, player.getInventory().getItemInMainHand());
+            applyEffects(player, player.getInventory().getItemInOffHand());
+        }
+    }
 
-            GemData data = plugin.getGemConfig().getGem(gemId);
-            if (data == null) continue;
+    private void applyEffects(Player player, ItemStack item) {
+        if (item == null || !item.hasItemMeta()) return;
 
-            for (Map<String, Object> effect : data.getEffects()) {
-                try {
-                    PotionEffectType type = PotionEffectType.getByName((String) effect.get("type"));
-                    if (type == null) continue;
+        String gemId = gemManager.getGemId(item);
+        if (gemId == null) return;
 
-                    int duration = (int) effect.getOrDefault("duration", 40);
-                    int amplifier = (int) effect.getOrDefault("amplifier", 0);
+        GemData data = plugin.getGemConfig().getGem(gemId);
+        if (data == null) return;
 
-                    player.addPotionEffect(new PotionEffect(type, duration, amplifier, true, false));
-                } catch (Exception ignored) {
-                }
+        for (Map<String, Object> effect : data.getEffects()) {
+            try {
+                String typeName = (String) effect.get("type");
+                PotionEffectType type = PotionEffectType.getByName(typeName);
+                if (type == null) continue;
+
+                int duration = (int) effect.getOrDefault("duration", 200);
+                int amplifier = (int) effect.getOrDefault("amplifier", 0);
+
+                PotionEffect potion = new PotionEffect(type, duration, amplifier, true, false, true);
+                player.addPotionEffect(potion);
+            } catch (Exception ignored) {
             }
         }
     }
